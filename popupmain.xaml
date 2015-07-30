@@ -1,0 +1,10 @@
+﻿<Controls:MetroWindow x:Name="w_popmain" x:Class="WinCloud.popupmain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:CefSharp.Wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="WinCloud Pop-Up" Height="700" Width="1200" ShowTitleBar="True" ShowIconOnTitleBar="False" EnableDWMDropShadow="True" ResizeMode="CanResizeWithGrip" Icon="Resources/logo_res.ico" WindowStartupLocation="CenterScreen" Loaded="w_popmain_Loaded">
+    <Grid>
+        <CefSharp.Wpf:ChromiumWebBrowser x:Name="c_pop"/>
+    </Grid>
+</Controls:MetroWindow>
