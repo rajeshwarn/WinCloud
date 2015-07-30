@@ -342,7 +342,7 @@ namespace WinCloud
                 }
                 else
                 {
-                    MessageBox.Show("Set username and password in the flyout core menu", "Missing Account", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    DialogManager.ShowMessageAsync(this, "Missing Account", "Set username and password in the flyout core menu.", MessageDialogStyle.Affirmative);
                 }
             }
 
@@ -360,7 +360,7 @@ namespace WinCloud
                 }
                 else
                 {
-                    MessageBox.Show("Set username and password in the flyout core menu", "Missing Account", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    DialogManager.ShowMessageAsync(this, "Missing Account", "Set username and password in the flyout core menu.", MessageDialogStyle.Affirmative);
                 }
             }
         }
@@ -478,7 +478,7 @@ namespace WinCloud
             Properties.Settings.Default.Save();
         }
 
-        public void desknotiques()
+        public async void desknotiques()
         {
             if (startingup == 0)
             {
@@ -882,7 +882,7 @@ namespace WinCloud
                 FirstAuxiliaryButtonText = "Submit An Issue",
                 SecondAuxiliaryButtonText = "Cancel"
             };
-            var diagresponse = await DialogManager.ShowMessageAsync(this, "Message Title here", "Your message description here", MessageDialogStyle.AffirmativeAndNegativeAndDoubleAuxiliary, mySettings);
+            var diagresponse = await DialogManager.ShowMessageAsync(this, "WinCloud to GitHub", "Where would you like to go?", MessageDialogStyle.AffirmativeAndNegativeAndDoubleAuxiliary, mySettings);
 
             switch (diagresponse)
             { 
