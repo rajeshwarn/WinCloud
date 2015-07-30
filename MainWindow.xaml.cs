@@ -31,17 +31,6 @@ namespace WinCloud
 {
     public partial class MainWindow : MetroWindow
     {
-        string vnumb = "0.0.1";
-        string vtype = "ALPHA RELEASE";
-        string changeset = "- Add option to consult the wiki on GitHub."
-            + System.Environment.NewLine +
-            "- Add option to submit an issue to GitHub."
-            + System.Environment.NewLine +
-            "- Replace WPF MessageBox with MahApps one."
-            + System.Environment.NewLine +
-            "- Fix title and content issue with web link.";
-        string version;
-
         int notifenable = 0;
         int notitime = 5000;
         WindowState modechange;
@@ -59,8 +48,6 @@ namespace WinCloud
 
         public MainWindow()
         {
-            version = vtype + " " + vnumb;
-
             Process Currentproc = Process.GetCurrentProcess();
 
             Process[] procByName = Process.GetProcessesByName("WinCloud");
@@ -146,9 +133,6 @@ namespace WinCloud
             var theme = ThemeManager.DetectAppStyle(Application.Current);
             ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(Properties.Settings.Default.theme), ThemeManager.GetAppTheme("BaseLight"));
 
-            versioncontrol.Content = version;
-            changelogtext.Content = changeset;
-
             if (Properties.Settings.Default.fs == true)
             {
                 this.WindowState = WindowState.Maximized;
@@ -228,6 +212,40 @@ namespace WinCloud
                 b_save.Content = "Reset Credential";
                 b_save.IsTabStop = false;
             }
+
+            int skipfirst = 0;
+            int breakloop = 0;
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"changelog.txt");
+            while ((line = file.ReadLine()) != null && breakloop == 0)
+            {
+                switch (skipfirst)
+                {
+                    case 0:
+                        versioncontrol.Content = line;
+                        skipfirst++;
+                        break;
+                    case 1:
+                        versioncontrol.Content += " " + line;
+                        skipfirst++;
+                        break;
+                    case 2:
+                        skipfirst++;
+                        break;
+                    default:
+                        if (line != "-----")
+                        {
+                            changelogtext.Content += line;
+                            changelogtext.Content += System.Environment.NewLine;
+                        }
+                        else
+                        {
+                            breakloop = 1;
+                        }
+                        break;
+                }
+            }
+            file.Close();
 
             var settings = new CefSettings();
             settings.CachePath = AppDomain.CurrentDomain.BaseDirectory + @"cache";

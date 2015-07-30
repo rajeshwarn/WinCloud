@@ -1,0 +1,4 @@
+﻿ALPHA RELEASE
+0.0.1
+
+- Create a function to read changelog from a file.
