@@ -342,6 +342,7 @@ namespace WinCloud
                 }
                 else
                 {
+                    fo_main.IsOpen = false;
                     DialogManager.ShowMessageAsync(this, "Missing Account", "Set username and password in the flyout core menu.", MessageDialogStyle.Affirmative);
                 }
             }
@@ -360,6 +361,7 @@ namespace WinCloud
                 }
                 else
                 {
+                    fo_main.IsOpen = false;
                     DialogManager.ShowMessageAsync(this, "Missing Account", "Set username and password in the flyout core menu.", MessageDialogStyle.Affirmative);
                 }
             }
@@ -482,10 +484,23 @@ namespace WinCloud
         {
             if (startingup == 0)
             {
-                if (MessageBox.Show("Restart needed for change to be activated, do you want to restart now?", "Restart Needed", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                var mySettings = new MetroDialogSettings()
                 {
-                    Properties.Settings.Default.Save();
-                    DelayAction(1000, new Action(() => { restart(); }));
+                    AffirmativeButtonText = "Restart Now",
+                    NegativeButtonText = "Manualy Later",
+                };
+                fo_main.IsOpen = false;
+                var diagresponse = await DialogManager.ShowMessageAsync(this, "Restart Needed", "Restart needed for change to be activated, do you want to restart now?", MessageDialogStyle.AffirmativeAndNegative, mySettings);
+
+                switch (diagresponse)
+                {
+                    case MessageDialogResult.Affirmative:
+                        Properties.Settings.Default.Save();
+                        DelayAction(1000, new Action(() => { restart(); }));
+                        break;
+
+                    case MessageDialogResult.Negative:
+                        break;
                 }
             }
         }
@@ -692,7 +707,8 @@ namespace WinCloud
         {
             if (b_save.Content != "Reset Credential" && tb_user.Text == "" || b_save.Content != "Reset Credential" && tb_pass.Password == "")
             {
-                MessageBox.Show("Please set your username and password!", "Save Error - Missing Information", MessageBoxButton.OK, MessageBoxImage.Error);
+                fo_main.IsOpen = false;
+                DialogManager.ShowMessageAsync(this, "Save Error - Missing Information", "Please set your username and password!", MessageDialogStyle.Affirmative);
             }
             else
             {
@@ -882,10 +898,11 @@ namespace WinCloud
                 FirstAuxiliaryButtonText = "Submit An Issue",
                 SecondAuxiliaryButtonText = "Cancel"
             };
+            fo_main.IsOpen = false;
             var diagresponse = await DialogManager.ShowMessageAsync(this, "WinCloud to GitHub", "Where would you like to go?", MessageDialogStyle.AffirmativeAndNegativeAndDoubleAuxiliary, mySettings);
 
             switch (diagresponse)
-            { 
+            {
                 case MessageDialogResult.Affirmative:
                     Process.Start("https://github.com/QuantumVectors/WinCloud/");
                     break;
