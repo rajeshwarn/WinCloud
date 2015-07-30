@@ -680,6 +680,30 @@ namespace WinCloud
             }
             else
             {
+                var task = c_web.EvaluateScriptAsync("document.getElementsByTagName('div')[2].textContent");
+
+                task.ContinueWith(t =>
+                {
+                    if (!t.IsFaulted)
+                    {
+                        var response = t.Result;
+                        if (response.Result.ToString() != "")
+                        {
+                            notisource = response.Result.ToString();
+                            DateTime dt = DateTime.Now;
+                            string validy = dt.ToString("h tt") + ": New " + notisource + " Notification";
+                            if (prevnoti != validy)
+                            {
+                                prevnoti = dt.ToString("h tt") + ": New " + notisource + " Notification";
+
+                                lb_notif.Items.Add(dt.ToString("h:mm tt") + ": New " + notisource + " Notification");
+
+                                b_clearnoti.Visibility = Visibility.Visible;
+                            }
+                        }
+                    }
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+
                 DelayAction(notitime, new Action(() => { notifcheck(); }));
             }
         }
