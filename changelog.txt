@@ -1,4 +1,9 @@
-﻿ALPHA RELEASE
-0.0.1
+﻿RELEASE VERSION
+1.0.0
 
-- Create a function to read changelog from a file.
+- Add option to consult the wiki on GitHub.
+- Add option to submit an issue to GitHub.
+- Change snooze to display notification box.
+- Change function to read changelog from file.
+- Replace WPF MessageBox with MahApps one.
+- Fix title and content issue with web link.
