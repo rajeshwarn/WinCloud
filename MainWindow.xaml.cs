@@ -25,6 +25,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro;
 using System.Security.Cryptography;
 using WindowsInput;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace WinCloud
 {
@@ -872,9 +873,41 @@ namespace WinCloud
             }
         }
 
-        private void b_web_MouseUp(object sender, MouseButtonEventArgs e)
+        private async void b_web_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://github.com/QuantumVectors/WinCloud/");
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "Project Page",
+                NegativeButtonText = "Application Wiki",
+                FirstAuxiliaryButtonText = "Submit An Issue",
+                SecondAuxiliaryButtonText = "Cancel"
+            };
+            var diagresponse = await DialogManager.ShowMessageAsync(this, "Message Title here", "Your message description here", MessageDialogStyle.AffirmativeAndNegativeAndDoubleAuxiliary, mySettings);
+
+            switch (diagresponse)
+            { 
+                case MessageDialogResult.Affirmative:
+                    Process.Start("https://github.com/QuantumVectors/WinCloud/");
+                    break;
+
+                case MessageDialogResult.Negative:
+                    Process.Start("https://github.com/QuantumVectors/WinCloud/wiki");
+                    break;
+
+                case MessageDialogResult.FirstAuxiliary:
+                    Process.Start("https://github.com/QuantumVectors/WinCloud/issues/new");
+                    break;
+
+                case MessageDialogResult.SecondAuxiliary:
+                    break;
+            }
+        }
+
+        public static async Task<MessageDialogResult> ShowMessage(string title, string message, MessageDialogStyle dialogStyle)
+        {
+            var metroWindow = (Application.Current.MainWindow as MetroWindow);
+            metroWindow.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+            return await metroWindow.ShowMessageAsync(title, message, dialogStyle, metroWindow.MetroDialogOptions);
         }
 
         private void b_web_MouseEnter(object sender, MouseEventArgs e)
