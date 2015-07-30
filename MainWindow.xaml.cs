@@ -31,9 +31,15 @@ namespace WinCloud
 {
     public partial class MainWindow : MetroWindow
     {
-        string vnumb = "0.0.0.0";
-        string vtype = "GIT RELEASE";
-        string changeset = "- Code preparation for initial release.";
+        string vnumb = "0.0.1";
+        string vtype = "ALPHA RELEASE";
+        string changeset = "- Add option to consult the wiki on GitHub."
+            + System.Environment.NewLine +
+            "- Add option to submit an issue to GitHub."
+            + System.Environment.NewLine +
+            "- Replace WPF MessageBox with MahApps one."
+            + System.Environment.NewLine +
+            "- Fix title and content issue with web link.";
         string version;
 
         int notifenable = 0;
