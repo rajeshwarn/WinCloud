@@ -1034,5 +1034,13 @@ namespace WinCloud
         {
             b_setting.Fill = Brushes.White;
         }
+
+        private void s_timer_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (startingup == 0)
+            {
+                l_timer.Content = s_timer.Value.ToString("0") + " sec(s)";
+            }
+        }
     }
 }

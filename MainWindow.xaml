@@ -73,8 +73,11 @@
                                 <Label x:Name="l_pass" Content="Password" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
                                 <PasswordBox x:Name="tb_pass" Margin="10,105,0,0" VerticalAlignment="Top" Height="23" Width="250"/>
                                 <Button x:Name="b_save" Content="Save Credential" Margin="10,140,0,0" VerticalAlignment="Top" Height="29" Click="b_save_Click"/>
-                                <Label Content="CHANGELOG" Margin="0,200,0,0" HorizontalAlignment="Center"/>
-                                <Label x:Name="changelogtext" Margin="0,235,0,0"/>
+                                <Label Content="NOTIFICATION TIMER" Margin="0,200,0,0" HorizontalAlignment="Center"/>
+                                <Slider x:Name="s_timer" Maximum="60" Minimum="1" Value="5" Margin="0,235,0,0" ValueChanged="s_timer_ValueChanged"/>
+                                <Label x:Name="l_timer" Content="x sec" Margin="0,250,0,0" HorizontalAlignment="Center"/>
+                                <Label Content="CHANGELOG" Margin="0,300,0,0" HorizontalAlignment="Center"/>
+                                <Label x:Name="changelogtext" Margin="0,335,0,0"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
