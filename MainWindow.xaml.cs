@@ -144,6 +144,11 @@ namespace WinCloud
                 ts_fully.IsChecked = false;
             }
 
+            s_timer.Value =  Convert.ToDouble(Properties.Settings.Default.timer);
+            l_timer.Content = "every " + Properties.Settings.Default.timer + " sec(s)";
+            string passovr = Properties.Settings.Default.timer + "000";
+            notitime = Convert.ToInt32(passovr);
+
             notifenable = Properties.Settings.Default.noti;
             if (notifenable == 1)
             {
@@ -1039,7 +1044,13 @@ namespace WinCloud
         {
             if (startingup == 0)
             {
-                l_timer.Content = s_timer.Value.ToString("0") + " sec(s)";
+                Properties.Settings.Default.timer = s_timer.Value.ToString("0");
+                Properties.Settings.Default.Save();
+
+                string passovr = s_timer.Value.ToString("0") + "000";
+                notitime = Convert.ToInt32(passovr);
+
+                l_timer.Content = "every " + s_timer.Value.ToString("0") + " sec(s)";
             }
         }
     }

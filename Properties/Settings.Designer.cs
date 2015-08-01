@@ -130,5 +130,17 @@ namespace WinCloud.Properties {
                 this["theme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public string timer {
+            get {
+                return ((string)(this["timer"]));
+            }
+            set {
+                this["timer"] = value;
+            }
+        }
     }
 }

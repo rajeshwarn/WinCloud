@@ -29,5 +29,8 @@
     <Setting Name="theme" Type="System.String" Scope="User">
       <Value Profile="(Default)">Amber</Value>
     </Setting>
+    <Setting Name="timer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
