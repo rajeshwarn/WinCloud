@@ -73,6 +73,16 @@ namespace WinCloud.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon logo_notif {
+            get {
+                object obj = ResourceManager.GetObject("logo_notif", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon logo_res {
             get {
                 object obj = ResourceManager.GetObject("logo_res", resourceCulture);

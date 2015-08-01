@@ -546,6 +546,15 @@ namespace WinCloud
             prevnoti = "";
             lb_notif.Items.Clear();
             b_clearnoti.Visibility = Visibility.Collapsed;
+
+            if (snozee == 0)
+            {
+                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo_snozed.ico");
+            }
+            else
+            {
+                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo.ico");
+            }
         }
 
         private void mNotiIcon_TrayLeftMouseUp(object sender, RoutedEventArgs e)
@@ -674,6 +683,7 @@ namespace WinCloud
                                 mNotiIcon.ToolTipText = dt.ToString("h:mm tt") + ": New " + notisource + " Notification";
                                 lb_notif.Items.Add(dt.ToString("h:mm tt") + ": New " + notisource + " Notification");
                                 mNotiIcon.ShowBalloonTip("New " + notisource + " Notification", "Click here to go to iCloud " + notisource, BalloonIcon.Info);
+                                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo_notif.ico");
 
                                 b_clearnoti.Visibility = Visibility.Visible;
                             }
@@ -702,6 +712,7 @@ namespace WinCloud
                                 prevnoti = dt.ToString("h tt") + ": New " + notisource + " Notification";
 
                                 lb_notif.Items.Add(dt.ToString("h:mm tt") + ": New " + notisource + " Notification");
+                                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo_notif.ico");
 
                                 b_clearnoti.Visibility = Visibility.Visible;
                             }
@@ -939,6 +950,14 @@ namespace WinCloud
             {
                 mNotiIcon.ToolTipText = "WinCloud Desktop";
                 b_clearnoti.Visibility = Visibility.Collapsed;
+                if (snozee == 0)
+                {
+                    mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo_snozed.ico");
+                }
+                else
+                {
+                    mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo.ico");
+                }
             }
         }
 
