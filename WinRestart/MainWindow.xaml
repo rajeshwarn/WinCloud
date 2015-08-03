@@ -1,0 +1,8 @@
+﻿<Window x:Name="w_main" x:Class="WinRestart.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="5" Width="5" Initialized="w_main_Initialized">
+    <Grid>
+        
+    </Grid>
+</Window>

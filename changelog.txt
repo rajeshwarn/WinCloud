@@ -1,4 +1,11 @@
 ﻿RELEASE VERSION
+1.1.1
+
+- Fix notification icon issue bugfix.
+- Fix reboot to fast.
+- Fix installer on Legacy OS.
+-----
+RELEASE VERSION
 1.1.0
 
 - Add notification frequency slider.

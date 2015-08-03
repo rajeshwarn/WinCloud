@@ -653,7 +653,7 @@ namespace WinCloud
 
         public void restart()
         {
-            Process.Start(Application.ResourceAssembly.Location);
+            Process.Start(AppDomain.CurrentDomain.BaseDirectory + "WinRestart.exe");
             this.Close();
         }
 
