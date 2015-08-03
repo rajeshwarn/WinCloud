@@ -549,11 +549,11 @@ namespace WinCloud
 
             if (snozee == 0)
             {
-                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo_snozed.ico");
+                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo.ico");
             }
             else
             {
-                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo.ico");
+                mNotiIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + @"Resources\logo_snozed.ico");
             }
         }
 
